@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <style>
+        /* Reset some default styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: #333;
+            color: #fff;
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+            .sidebar a {
+                padding: 15px 20px;
+                text-decoration: none;
+                font-size: 16px;
+                color: #fff;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidebar a i {
+                    margin-right: 10px;
+                }
+
+                .sidebar a:hover {
+                    background-color: #444;
+                }
+
+            .sidebar .logo {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+                .sidebar .logo img {
+                    max-width: 100px;
+                    height: auto;
+                }
+
+        /* Content Styles */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+            .footer a {
+                color: #ffd700;
+                text-decoration: none;
+                margin: 0 10px;
+                transition: 0.3s;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+
+        .copyright {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="~/Image/logo/logo (2).png" />
+        </div>
+
+        @*`<a href="@Url.Action("ViewBookedCustomers", "bookRide", new { id = Session["customerId"] })" class="active">Booking</a>*@
+
+
+        <a href="@Url.Action("updateAdmin", "Admin", new { id = Session["customerId"] })" class="active">
+            <i class="fas fa-users"></i>My profile
+        </a>
+        <a href="https://localhost:44391/Vehicle/manageVehicleDetails"><i class="fas fa-car"></i> Manage cars</a>
+        <a href="@Url.Action("ViewBookedCustomers", "bookRide", new { id = Session["customerId"] })" class="active"><i class="fas fa-book"></i> Bookings</a>
+        @*<a href="https://localhost:44391/bookRide/ApprovalHistory"><i class="fas fa-book"></i> Booking History</a>*@
+        <a href="https://localhost:44391/Customer/ViewCustomer"><i class="fas fa-users"></i>   Customers</a>
+        <a href="https://localhost:44391/Host/ViewHostDetails"><i class="fas fa-users"></i>   Hosts</a>
+        <a href="https://localhost:44391/Admin/addAdmin"><i class="fas fa-users"></i>Add admin</a>
+        <a href="https://localhost:44391/Host/addHosts"><i class="fas fa-users"></i>Add host</a>
+        <a href="https://localhost:44391/Vehicle/HostVehiclesApprovalAdmin"><i class="fas fa-question-circle"></i>Host vehcile requests</a>
+        <a href="https://localhost:44391/Admin/hostRequests"><i class="fas fa-question-circle"></i>Host requests</a>
+        <a href="https://localhost:44391/Contact/ViewEnquiries"><i class="fas fa-question-circle"></i> Enquiries</a>
+        @*<a href="https://localhost:44391/Home/Index"><i class="fa fa-sign-out-alt" aria-hidden="true"></i> Logout</a>*@
+        <a href="@Url.Action("Logout", "Login", new { id = Session["customerId"] })" class="active">
+            <i class="fa fa-sign-out-alt"></i>Logout
+        </a>
+    </div>
+    <!-- Your content goes here -->
+    <div class="content">
+        @RenderBody()
+
+
+    </div>
+
+    <footer class="footer">
+        @*<div class="footer-links">
+                <a href="#"><i class="fas fa-lock"></i> Privacy Policy</a>
+                <a href="#"><i class="fas fa-info-circle"></i> Terms of Service</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
+            </div>*@
+        <div class="copyright">
+            &copy; <span>CarDeal</span> | All Rights Reserved
+        </div>
+    </footer>
+</body>
+
+</html>
+@RenderSection("scripts", required: false)

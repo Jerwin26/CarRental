@@ -1,0 +1,30 @@
+﻿@model CarRental.Models.Admin
+@{
+    Layout = "~/Views/Admin/adminLayout.cshtml";
+}
+<!-- Rest of your Razor view content here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Booking</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-image: url('../../image/logo/carrental image/backgro.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3 style="text-align:center">welcome @Session["UserName"]</h3>
+        <p style="text-align:center">You can manage cars, bookings, users, and settings from here.</p>
+    </div> 
+</body>
+ </html>
+

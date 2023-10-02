@@ -1,0 +1,99 @@
+﻿@model IEnumerable<CarRental.Models.ApprovalHistoryModel>
+
+@{
+    ViewBag.Title = "ApprovalHistory";
+}
+
+<h2>ApprovalHistory</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RideId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vehicleID_FK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customerId_FK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fare)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DropDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovalStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleBrand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleLicensePlate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RideId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vehicleID_FK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customerId_FK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fare)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DropDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleBrand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleLicensePlate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

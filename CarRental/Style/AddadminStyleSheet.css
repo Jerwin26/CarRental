@@ -1,0 +1,25 @@
+﻿
+body {
+    background-image: url('../../image/logo/carrental image/backgro.jpeg');
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.datepicker {
+    z-index: 9999;
+}
+
+

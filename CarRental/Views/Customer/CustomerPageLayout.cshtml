@@ -1,0 +1,187 @@
+﻿@*@model CarRental.Models.Customer*@
+
+
+@{
+    ViewBag.Title = "CustomerPageLayout";
+}
+
+@{
+    string customerId = Session["customerId"] as string;
+    string username = Session["username"] as string;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title></title>
+    <style>
+        .header {
+            height: 14vh;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 30%;
+            height: auto;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 5px;
+            margin-left: 35%;
+        }
+
+            .navbar a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .navbar a:hover {
+                    color: #ffd700;
+                }
+
+        .header-buttons .btn {
+            margin-left: 10px;
+        }
+
+        .header-buttons .btn-primary {
+            background-color: #ffd700;
+            color: #333;
+            border: none;
+        }
+
+
+        .header-buttons .btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+
+        .header-buttons {
+            margin-right: 5%;
+        }
+
+            .header-buttons .btn-primary:hover {
+                background-color: #333;
+                color: #ffd700;
+            }
+
+        footer {
+            background-color: #333;
+            
+            color: #fff;
+            padding: 15px 0;
+            height:32vh;
+        }
+
+        .main-footer {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            color: #ffd700;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+            .footer ul li {
+                margin-bottom: 10px;
+            }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+ 
+       
+        @RenderSection("scripts", required: false)
+
+
+</head>
+
+<body>
+    <header class="header sticky-top">
+        <div class="logo">
+            <img src="~/Image/logo/logo (2).png" alt="Logo" />
+        </div>
+
+        <nav class="navbar">
+            <a href="@Url.Action("CustomerIndex", "Customer", new { id = Session["customerId"], username = Session["username"] })" class="nav-link">Home</a>
+            <a href="#Contact">@Html.ActionLink("Book car", "GetVehicleDetails", "Vehicle", new { id = Session["customerId"], username = Session["username"] }, new { @class = "nav-link" })</a>
+            <a href="@Url.Action("MyBookings", "bookRide", new { customerId = Session["customerId"], username = Session["username"] })" class="nav-link">My bookings</a>
+            <a href="@Url.Action("EditCustomer", "Customer", new { id = Session["customerId"] })" class="active">
+                <i class="fas fa-users"></i>My profile
+            </a>
+        </nav>
+
+        <div class="header-buttons">
+            <a href="https://localhost:44391/" class="btn btn-primary">Logout</a>
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        <section class="footer sticky-bottom">
+            <div class="main-footer">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Locations</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Kanyakumari</a></li>
+                            <li><a href="#">Coimbatore</a></li>
+                            <li><a href="#">Kerala</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>Quick links</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="https://localhost:44391/">Home</a></li>
+                            <li><a href="https://localhost:44391/Home/About">About</a></li>
+                            <li><a href="https://localhost:44391/Home/Contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>Contact info</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#">8754651265</a></li>
+                            <li><a href="#">9627654321</a></li>
+                            <li><a href="cardeal@gmail.com">cardeal@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>Follow us</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; <span>CarDeal</span> | All Rights Reserved
+            </div>
+        </section>
+    </footer>
+
+</body>
+
+</html>

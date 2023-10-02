@@ -1,0 +1,57 @@
+﻿
+    body {
+        background-image: url('../../image/logo/carrental image/backgro.jpeg');
+    }
+
+    .container {
+        display: flex;
+        /*justify-content: center;*/ 
+        height: auto;     }
+
+    .custom-card {
+        align-items: center;
+        padding: 20px;
+        margin: 10px; 
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        height:88%;
+        width: 90%;
+    }
+
+   
+        .custom-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-card img {
+            max-width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+        }
+
+        .custom-card .card-body {
+            /* padding: 10px; */
+        }
+
+        .custom-card .card-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .custom-card .card-text {
+            font-size: 14px;
+        }
+
+        .custom-card .btn {
+            margin-top: auto;
+        }
+        #h2{
+            text-align:center;
+            margin-top:2%;
+        }

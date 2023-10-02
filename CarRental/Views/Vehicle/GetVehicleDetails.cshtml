@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CarRental.Models.Vehicle>
+
+@{
+    ViewBag.Title = "GetVehicleDetails";
+    Layout = "~/Views/Customer/CustomerPageLayout.cshtml";
+}
+<link href="~/Style/GetVehicleDetailsStyleSheet.css" rel="stylesheet" />
+<div class="container mt-5">
+    <h2 class="text-center">Book Your Car <span class="text-success">@Session["userName"]</span></h2>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            if (item.vehicleStatus != "2")
+            {
+                <div class="col-md-4">
+                    <div class="card vehicle-card">
+                        <img src="data:image/jpeg;base64,@(item.vehicleImage != null ? Convert.ToBase64String(item.vehicleImage) : "")" class="card-img-top vehicle-image" alt="Vehicle Image">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.brand</h5>
+                            <p class="card-text">
+                                License Plate: @item.licensePlate<br />
+                                Fuel Type: @item.fuelType<br />
+                                Vehicle Type: @item.vehicleType<br />
+                                Per day Vehicle Price: @item.vehiclePrice<br />
+                                Vehicle Status:
+                                <span class="font-weight-bold">
+                                    @if (item.vehicleStatus == "0")
+                                    {
+                                        <span class="available">Available</span>
+                                    }
+                                    else if (item.vehicleStatus == "1")
+                                    {
+                                        <span class="not-available">Not Available</span>
+                                    }
+                                    else if (item.vehicleStatus == "2")
+                                    {
+                                        <span class="available">Arriving Soon</span>
+                                    }
+                                </span><br />
+                            </p>
+                            @if (item.vehicleStatus == "0")
+                            {
+                                <div class="action-button">
+                                    <a href="@Url.Action("book", "bookRide", new { Vehicle_id = item.vehicleID, User_id = Session["customerId"] })" class="btn btn-success">Book now</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

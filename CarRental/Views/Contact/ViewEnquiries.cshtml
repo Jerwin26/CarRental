@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CarRental.Models.Contact>
+
+@{
+    Layout = "~/Views/Admin/adminLayout.cshtml";
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<div class="container">
+    <h2 style="text-align:center">Contact enquiries</h2>
+    <p>
+        <a class="btn btn-danger" href="@Url.Action("DeleteContact", new { @*id = item.PrimaryKey*@ })">Clear all</a>
+    </p>  
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.fullName)</th>
+                <th>@Html.DisplayNameFor(model => model.email)</th>
+                <th>@Html.DisplayNameFor(model => model.phoneNumber)</th>
+                <th>@Html.DisplayNameFor(model => model.message)</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.fullName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.phoneNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.message)</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<CarRental.Models.Customer>
+
+@{
+    ViewBag.Title = "My Bookings";
+    Layout = "~/Views/Customer/CustomerPageLayout.cshtml";
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    body {
+        background-image: url('../../image/logo/carrental image/backgro.jpeg');
+    }
+
+    .row {
+        margin-top: 6%;
+        margin-bottom: 3%;
+    }
+    /* Custom CSS for improved design */
+    .booking-card {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .booking-card h5 {
+            font-size: 1.5rem;
+        }
+
+        .booking-card table {
+            width: 100%;
+        }
+
+            .booking-card table tr {
+                border-bottom: 1px solid #ccc;
+            }
+
+            .booking-card table td {
+                padding: 8px 0;
+            }
+
+        .booking-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+</style>
+
+<div class="container mt-4">
+    <h2 class="text-center">Your bookings: @Session["userName"]</h2>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="booking-card">
+                    <table>
+                        <tr>
+                            <td><strong>Name:</strong></td>
+                            <td>@item.firstName @item.lastName</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phone number:</strong></td>
+                            <td>@item.phoneNumber</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email:</strong></td>
+                            <td>@item.emailAddress</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Address:</strong></td>
+                            <td>@item.Address</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pick date:</strong></td>
+                            <td>@item.pickDate</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Drop date:</strong></td>
+                            <td>@item.dropDate</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fare:</strong></td>
+                            <td>@item.fare</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Payment method:</strong></td>
+                            <td>@item.PaymentMethod</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Approval status:</strong></td>
+                            <td>@item.ApprovalStatus</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="container mb-7">
+
+</div>

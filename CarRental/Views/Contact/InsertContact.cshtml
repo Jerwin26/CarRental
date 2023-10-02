@@ -1,0 +1,116 @@
+﻿@model CarRental.Models.Contact
+
+@{
+    Layout = "~/Views/Home/HomeLayout.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Style/InsertContactStyleSheet.css" rel="stylesheet" />
+    <div class="container contact-container">
+        <h2 class="form-title">Contact us</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fullName, new { @class = "form-label" })
+            @Html.EditorFor(model => model.fullName, new { htmlAttributes = new { @class = "form-control", required = "required", id = "fullName" } })
+            <span id="fullNameError" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, new { @class = "form-label" })
+            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", required = "required", type = "email", id = "email" } })
+            <span id="emailError" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <strong>Mobile</strong>
+            @Html.EditorFor(model => model.phoneNumber, new { htmlAttributes = new { @class = "form-control", type = "tel", id = "phoneNumber" } })
+            <span id="phoneError" class="text-danger"></span> 
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.message, new { @class = "form-label" })
+            @Html.TextAreaFor(model => model.message, new { @class = "form-control form-control-lg", rows = 6, required = "required", id = "message" })
+            <span id="messageError" class="text-danger"></span>
+        </div>
+
+        <div class="text-center">
+            <button type="button" onclick="validateForm()" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var fullName = document.getElementById("fullName").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var message = document.getElementById("message").value.trim();
+            var phone = document.getElementById("phoneNumber").value.trim();
+            var fullNameError = document.getElementById("fullNameError");
+            var emailError = document.getElementById("emailError");
+            var messageError = document.getElementById("messageError");
+            var phoneError = document.getElementById("phoneError");
+
+            fullNameError.textContent = ""; 
+            emailError.textContent = "";
+            messageError.textContent = "";
+
+            var isValid = true;
+
+            if (fullName === "") {
+                fullNameError.textContent = "Full name is required.";
+                isValid = false;
+            }
+
+            if (email === "") {
+                emailError.textContent = "Email is required.";
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                emailError.textContent = "Invalid email address.";
+                isValid = false;
+            }
+
+            if (phone === "") {
+                phoneError.textContent = "Phone number is required.";
+                isValid = false;
+
+            } else if (!isValidPhoneNumber(email)) {
+                phoneError.textContent = "Invalid phone number.";
+                isValid = false;
+            }
+
+            if (message === "") {
+                messageError.textContent = "Message is required.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                document.forms[0].submit(); 
+            }
+        }
+
+        function isValidEmail(email) {
+            var emailRegex = /^[A-Za-z0-9._%-]+@@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+            return emailRegex.test(email);
+        }
+        function isValidPhoneNumber(phoneNumber) {
+            var phoneRegex = /^\d{10}$/;
+            return phoneRegex.test(phoneNumber);
+        }
+    </script>
+}
+
+@*<div class="text-center mt-3">
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

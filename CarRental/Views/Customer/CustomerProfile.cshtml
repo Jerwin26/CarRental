@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CarRental.Models.Customer>
+
+<div class="container">
+    <h2>Customer List</h2>
+    <p>
+        @Html.ActionLink("Create New Customer", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Phone Number</th>
+                <th>Email Address</th>
+                <th>Address</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.firstName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.lastName)</td>
+                    <td>@item.dateOfBirth.ToShortDateString()</td>
+                    <td>@Html.DisplayFor(modelItem => item.gender)</td>
+                    <td>@Html.DisplayFor(modelItem => item.phoneNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.emailAddress)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                    <td>@Html.DisplayFor(modelItem => item.state)</td>
+                    <td>@Html.DisplayFor(modelItem => item.city)</td>
+                    <td>@Html.DisplayFor(modelItem => item.username)</td>
+                    <td>@Html.DisplayFor(modelItem => item.password)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditCustomer", new { id = item.customerId }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Delete", "DeleteCustomer", new { id = item.customerId }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

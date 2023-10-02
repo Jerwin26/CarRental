@@ -1,0 +1,107 @@
+﻿@model IEnumerable<CarRental.Models.Customer>
+
+@{
+    ViewBag.Title = "ViewBookedCustomers";
+    Layout = "~/Views/Admin/adminLayout.cshtml";
+}
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+
+    <h2 class="mt-4" style="text-align:center">Booked customers</h2>
+    <p>
+        @*<a class="btn btn-primary" href="@Url.Action("Create")">Create New</a>*@
+        <a class="btn btn-danger" href="@Url.Action("ClearBookRide", new { @*id = item.PrimaryKey*@ })">Clear all</a>
+    </p>
+    <div class="table-responsive mt-3">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Full name</th>
+                    @*<th>Date of Birth</th>*@
+                    <th>Gender</th>
+                    <th>Phone number</th>
+                    <th>Email address</th>
+                    <th>Address</th>
+                    @*<th>State</th>
+                        <th>City</th>
+                        <th>Username</th>*@
+
+                    <th>Pick date</th>
+                    <th>Drop date</th>
+                    <th>Fare</th>
+                    <th>Payment method</th>
+                    <th>Approval status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.firstName @item.lastName</td>
+                        @*<td>@Html.DisplayFor(modelItem => item.dateOfBirth)</td>*@
+                        <td>@Html.DisplayFor(modelItem => item.gender)</td>
+                        <td>@Html.DisplayFor(modelItem => item.phoneNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.emailAddress)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                        @*<td>@Html.DisplayFor(modelItem => item.state)</td>
+                            <td>@Html.DisplayFor(modelItem => item.city)</td>
+                            <td>@Html.DisplayFor(modelItem => item.username)</td>*@
+
+                        <td>@Html.DisplayFor(modelItem => item.pickDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.dropDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.fare)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PaymentMethod)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ApprovalStatus)</td>
+                        <td>
+                            @if (item.ApprovalStatus == "Pending")
+                            {
+                                <a href="@Url.Action("AcceptBooking", "bookRide", new { rideId = item.rideId })" class="btn btn-success btn-sm">Accept</a>
+                                <a href="@Url.Action("RejectBooking", "bookRide", new { rideId = item.rideId })" class="btn btn-danger btn-sm">Reject</a>
+                            }
+                            else if (item.ApprovalStatus == "Booked")
+                            {
+                                @*<span class="badge badge-success">Approved</span>*@
+                                <a href="@Url.Action("rentVehicleSubmitted", "bookRide", new { rideId = item.rideId })" class="btn btn-success btn-sm" id="completeRideButton">Complete the Ride</a>
+
+                            }
+                            else if (item.ApprovalStatus == "Cancelled")
+                            {
+                                @*<span class="badge badge-danger">Rejected</span>*@
+                            }
+                            @if (item.ApprovalStatus == "Booked")
+                            {
+                                <span class="btn btn-warning" id="rentCompletedMessage" style="display: none;"></span>
+                            }
+
+
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var completeRideButton = document.getElementById("completeRideButton");
+            var rentCompletedMessage = document.getElementById("rentCompletedMessage");
+
+            if (completeRideButton && rentCompletedMessage) {
+                completeRideButton.addEventListener("click", function () {
+                    rentCompletedMessage.style.display = "inline-block";
+                });
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

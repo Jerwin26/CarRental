@@ -1,0 +1,108 @@
+﻿@model CarRental.Models.Customer
+
+@{
+    Layout = "~/Views/Customer/CustomerPageLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Booking</title>
+ 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-size: cover;
+            background-image: url('../../image/logo/carrental image/selfdrive.gif');
+            background-attachment: fixed;
+            background-position: center center;
+        }
+        #img{
+         max-width:80%;
+         margin-left:8%;
+        }
+
+        .customerindex {
+            width: 30%;
+            height:10%;
+            margin-top: 3%;
+            margin-bottom:2%;
+         
+            padding: 70px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10%;
+        }
+
+        .cindex1 h1 {
+            font-size: 28px;
+            color: #007bff;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .box-shadow-form {
+            padding: 20px;
+        }
+
+        .row {
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container customerindex">
+        <div style="text-align: center;">
+            <h2>Find your car @Session["UserName"]</h2>
+        </div>
+        <form action="@Url.Action("AvailableVehicles", "Vehicle")" method="post" class="box-shadow-form">
+            <img id="img" src="~/Image/logo/logo (2).png" />
+            <div class="form-group">
+                <label for="pickupDate">Pickup Date:</label>
+                <input type="date" class="form-control" id="pickupDate" name="pickupDate" required min="@DateTime.Now.ToString("yyyy-MM-dd")">
+            </div>
+
+            <div class="form-group">
+                <label for="dropoffDate">Drop-off Date:</label>
+                <input type="date" class="form-control" id="dropoffDate" name="dropoffDate" required min="@DateTime.Now.ToString("yyyy-MM-dd")">
+            </div>
+
+            @*<div class="form-group">
+                <label for="carType">Car Type:</label>
+                <select class="form-control" id="carType" name="carType" required>
+                    <option value="Standard">Standard</option>
+                    <option value="Luxury">Luxury</option>
+                </select>
+            </div>*@
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Search your car</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

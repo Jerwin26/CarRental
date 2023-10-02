@@ -1,0 +1,47 @@
+﻿body {
+    background-image: url('../../image/logo/carrental image/backgro.jpeg');
+}
+/* Custom CSS styles */
+.vehicle-card {
+    padding: 20px;
+    margin-bottom: 20px;
+    height: 90%;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    background-color: #fff;
+}
+
+    .vehicle-card:hover {
+        transform: translateY(-5px);
+    }
+
+.vehicle-image {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.available {
+    color: green;
+}
+
+.not-available {
+    color: red;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.action-button {
+    text-align: center;
+    margin-top: 15px;
+}
+

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CarRental.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Available Vehicles";
+    Layout = "~/Views/Customer/CustomerPageLayout.cshtml";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="~/Style/AvailableVehicleStyleSheet1.css" rel="stylesheet" />
+<h2 id=h2>Available vehicles @Session["userName"]</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card custom-card">
+                    @if (item.vehicleImage != null)
+                    {
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.vehicleImage)" class="card-img-top" alt="Vehicle Image">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@item.brand</h5>
+                        <p class="card-text">
+                            <strong>License plate:</strong> @item.licensePlate<br>
+                            <strong>Fuel type:</strong> @item.fuelType<br>
+                            <strong>Vehicle type:</strong> @item.vehicleType<br>
+                            <strong>Vehicle price:</strong> @item.vehiclePrice<br>
+                            @*<strong>Vehicle Status:</strong> @item.VehicleStatus<br>*@
+                        </p>
+                        <div class="text-center">
+                            <a href="@Url.Action("book", "bookRide", new { Vehicle_id = item.vehicleID, User_id = Session["customerId"] })" class="btn btn-success">Book now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

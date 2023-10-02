@@ -1,0 +1,59 @@
+﻿
+/* Add box shadow to a specific element */
+.box-shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Customize the shadow here */
+}
+
+/* Improved styling for the About Us section */
+.about p {
+    margin-top: 28px;
+}
+
+.aboutus {
+    /*            background-image: url('../../image/logo/carrental image/backgro.jpeg');
+*/ padding: 40px 0;
+}
+
+.about {
+    text-align: center;
+    margin-top: 30px;
+}
+
+    .about h3 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .about img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5%;
+    }
+
+/* Styling for the "Why Choose Us?" section */
+.choose-us {
+    padding: 30px;
+}
+
+    .choose-us h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .choose-us ul {
+        margin-top: 6%;
+        list-style: inside;
+        padding: 0;
+    }
+
+    .choose-us li {
+        margin-bottom: 10px;
+    }
+
+    .choose-us img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5%;
+    }
+
+

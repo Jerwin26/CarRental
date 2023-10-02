@@ -1,0 +1,269 @@
+﻿@model CarRental.Models.Customer
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Home/HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="~/Style/RegisterfromStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h2>Registration form</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+               
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.firstName, new { @id = "firstName-label" })
+                        @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control", @id = "firstName" } })
+                        @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.lastName, new { @id = "lastName-label" })
+                        @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control", @id = "lastName" } })
+                        @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.dateOfBirth, new { @id = "dateOfBirth-label" })
+                        @Html.EditorFor(model => model.dateOfBirth, new { htmlAttributes = new { @class = "form-control", @id = "datepicker", @type = "text" } })
+                        @Html.ValidationMessageFor(model => model.dateOfBirth, "", new { @class = "text-danger" })
+                    </div>
+             
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.gender, new { @id = "gender-label" })
+                        <div class="form-check">
+                            <label class="radio-label">
+                                @Html.RadioButtonFor(model => model.gender, "Male", new { @class = "form-check-input", @id = "male" }) Male
+                            </label>
+
+                            <label class="radio-label">
+                                @Html.RadioButtonFor(model => model.gender, "Female", new { @class = "form-check-input", @id = "female" }) Female
+                            </label>
+
+                            <label class="radio-label">
+                                @Html.RadioButtonFor(model => model.gender, "Other", new { @class = "form-check-input", @id = "other" }) Other
+                            </label>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.phoneNumber, new { @id = "phoneNumber-label" })
+                        @Html.EditorFor(model => model.phoneNumber, new { htmlAttributes = new { @class = "form-control", @id = "phoneNumber" } })
+                        @Html.ValidationMessageFor(model => model.phoneNumber, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.emailAddress, new { @id = "emailAddress-label" })
+                        @Html.EditorFor(model => model.emailAddress, new { htmlAttributes = new { @class = "form-control", @id = "emailAddress" } })
+                        @Html.ValidationMessageFor(model => model.emailAddress, "", new { @class = "text-danger" })
+                    </div>
+              
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address, new { @id = "Address-label" })
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @id = "Address" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.state, new { @id = "state-label" })
+                @Html.DropDownListFor(model => model.state, ViewBag.States as SelectList, "Select a State", new { @class = "form-control", id = "stateDropdown" })
+                @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.city, new { @id = "city-label" })
+                @Html.DropDownListFor(model => model.city, new SelectList(Enumerable.Empty<SelectListItem>(), "Value", "Text"), "Select a City", new { @class = "form-control", id = "cityDropdown" })
+                @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.username, new { @id = "username-label" })
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @id = "username" } })
+                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.password, new { @id = "password-label" })
+                @Html.PasswordFor(model => model.password, new { @class = "form-control", @id = "password" })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ConfirmPassword, new { @id = "confirmPassword-label" })
+                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", @id = "confirmpassword" })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Register" class="btn btn-outline-success" id="registerButton" />
+            </div>
+
+        }
+    </div>
+</body>
+</html>
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            function containsNumbers(input) {
+                return /\d/.test(input);
+            }
+
+            function isValidEmail(email) {
+                return /^[^\s]+[^\s]+\.[^\s]+$/.test(email);
+            }
+
+            function isValidPhoneNumber(phone) {
+                return /^\d{10}$/.test(phone);
+            }
+
+            function showError(field, message) {
+                field.addClass("is-invalid");
+                field.closest(".form-group").find(".text-danger").text(message);
+            }
+
+            function clearError(field) {
+                field.removeClass("is-invalid");
+                field.closest(".form-group").find(".text-danger").text("");
+            }
+
+            $("#firstName").on("blur", function () {
+                var firstName = $(this).val();
+                if (containsNumbers(firstName)) {
+                    showError($(this), "First name should not contain numbers.");
+                } else if (firstName.trim() === "") {
+                    showError($(this), "First name is required field");
+                }
+
+
+                else {
+                    clearError($(this));
+                }
+            });
+
+            $("#lastName").on("blur", function () {
+                var lastName = $(this).val();
+                if (containsNumbers(lastName)) {
+                    showError($(this), "Last name should not contain numbers.");
+                } else if (lastName.trim() === "") {
+                    showError($(this), "Last name is required ");
+                }
+
+                else {
+                    clearError($(this));
+                }
+            });
+            $("#datepicker").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeYear: true,
+                changeMonth: true,
+                maxDate: 0,
+            });
+            $("#Address").on("blur", function () {
+                var address = $(this).val();
+                if (address.trim() === "") {
+                    showError($(this), "Address is required ");
+                } else  {
+                    clearError($(this));
+                }
+            }); $("#password").on("blur", function () {
+                var password = $(this).val();
+                if (password.trim() === "") { // Check if the field is empty or contains only whitespace
+                    showError($(this), " Password is required ");
+                } else  {
+                    clearError($(this));
+                }
+            });$("#username").on("blur", function () {
+                var username = $(this).val();
+                if (username.trim() === "") { // Check if the field is empty or contains only whitespace
+                    showError($(this), "Username is required field");
+                } else  {
+                    clearError($(this));
+                }
+            }); $("#confirmpassword").on("blur", function () {
+                var username = $(this).val();
+                if (username.trim() === "") { // Check if the field is empty or contains only whitespace
+                    showError($(this), "Confirm password is required ");
+                } else  {
+                    clearError($(this));
+                }
+            });
+
+
+ $("#stateDropdown").change(function () {
+     var selectedStateId = $(this).val();
+     if (selectedStateId !== "") {
+         $.ajax({
+             url: '@Url.Action("Cities", "Customer")',
+             type: 'GET',
+             data: { stateId: selectedStateId },
+             success: function (data) {
+                 var cityDropdown = $("#cityDropdown");
+                 cityDropdown.empty();
+                 cityDropdown.append($('<option>').text("Select a City").val(""));
+                 $.each(data, function (index, city) {
+                     cityDropdown.append($('<option>').text(city.Text).val(city.Value));
+                 });
+             }
+         });
+     } else {
+         var cityDropdown = $("#cityDropdown");
+         cityDropdown.empty();
+         cityDropdown.append($('<option>').text("Select a City").val(""));
+     }
+ });
+            $("#emailAddress").on("blur", function () {
+                var email = $(this).val();
+                if (!isValidEmail(email)) {
+                    showError($(this), "Invalid email address.");
+                } else {
+                    clearError($(this));
+                }
+            });
+
+            $("#phoneNumber").on("blur", function () {
+                var phone = $(this).val();
+                if (!isValidPhoneNumber(phone)) {
+                    showError($(this), "Invalid phone number (10 digits required).");
+                } else {
+                    clearError($(this));
+                }
+            });
+
+            $("#password, #confirmpassword").on("blur", function () {
+                var password = $("#password").val();
+                var confirmPassword = $("#confirmpassword").val();
+                if (password !== confirmPassword) {
+                    showError($("#confirmpassword"), "Passwords do not match.");
+                } else {
+                    clearError($("#confirmpassword"));
+                }
+            });
+
+            $("input[name='gender']").on("change", function () {
+                var selectedGender = $("input[name='gender']:checked").val();
+                if (!selectedGender) {
+                    showError($(this).closest(".form-group"), "Please select a gender.");
+                } else {
+                    clearError($(this).closest(".form-group"));
+                }
+            });
+        });
+    </script>
+}

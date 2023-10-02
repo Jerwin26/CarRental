@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Contactus Page";
+    Layout = "~/Views/Home/HomeLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inquiry Form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Style/Contactus.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="contactcontainer">
+        <h1 class="mt-5">Contact us</h1>
+
+        <div class="contact-form mt-4">
+            <form action="Contactform">
+                <div class="form-group">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" class="form-control" id="full_name" name="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

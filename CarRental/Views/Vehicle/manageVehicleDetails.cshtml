@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CarRental.Models.Vehicle>
+
+@{
+    ViewBag.Title = "manageVehicleDetails";
+    Layout = "~/Views/Admin/adminLayout.cshtml";
+}
+<h2 style="text-align:center">Manage vehicle details</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link href="~/Style/ManageVehicleStyleSheet1.css" rel="stylesheet" />
+<p>
+    @Html.ActionLink("Add New", "AddVehicle", null, new { @class = "btn btn-success" })
+</p>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="data:image/jpeg;base64,@(item.vehicleImage != null ? Convert.ToBase64String(item.vehicleImage) : "")" class="card-img-top" alt="Vehicle Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.brand</h5>
+                        <p class="card-text">
+                            License Plate: @item.licensePlate<br />
+                            Fuel Type: @item.fuelType<br />
+                            Vehicle Type: @item.vehicleType<br />
+                            Vehicle Price: @item.vehiclePrice<br />
+                            Vehicle Status: <span class="@((item.vehicleStatus == "0") ? "status-available" : "status-not-available")">@((item.vehicleStatus == "0") ? "Available" : "Not Available")</span><br />
+                        </p>
+
+                    </div>
+                    <div class="card-actions center-button">
+                        @Html.ActionLink("Edit", "EditVehicle", new { id = item.vehicleID }, new { @class = "btn-warning btn-sm" }) |
+                        @Html.ActionLink("Delete", "DeleteVehicle", new { id = item.vehicleID }, new { @class = "btn btn-danger btn-sm" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

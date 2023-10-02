@@ -1,0 +1,62 @@
+﻿using CarRental.Models;
+using CarRental.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace CarRental.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+
+        /// <summary>
+        /// This method is used to insert the contact enquires
+        /// </summary>
+        /// <param name="contact"></param>
+        /// <returns></returns>
+
+        [HttpPost]
+
+     
+        public ActionResult InsertContact(Contact contact)
+        {
+            try
+            {
+
+                contactRepo contactRepo = new contactRepo();
+                contactRepo.insertContact(contact);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+               
+                return View(contact); 
+            }
+        }
+
+
+    }
+}

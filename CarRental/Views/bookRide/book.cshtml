@@ -1,0 +1,126 @@
+﻿@model CarRental.Models.BookRide
+
+@{
+    ViewBag.Title = "Book a Ride";
+    Layout = "~/Views/Customer/CustomerPageLayout.cshtml";
+}
+
+<!-- Add this link to the Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Payment portal</h2>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.VehicleType, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.VehicleType, new SelectList(new[] { "Standard", "Luxury" }), new { @class = "form-control", id = "VehicleType" })
+                            @Html.ValidationMessageFor(model => model.VehicleType, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Pick Date", htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.PickDate, new { @class = "form-control", id = "PickDate", type = "date", min = DateTime.Now.ToString("yyyy-MM-dd") })
+                            @Html.ValidationMessageFor(model => model.PickDate, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Drop Date", htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.DropDate, new { @class = "form-control", id = "DropDate", type = "date", min = DateTime.Now.ToString("yyyy-MM-dd") })
+                            @Html.ValidationMessageFor(model => model.DropDate, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PaymentMethod, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.PaymentMethod, new SelectList(new[] { "Credit Card", "Upi", "Paytm" }), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.PaymentMethod, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fare, htmlAttributes: new { @class = "control-label" })
+                            <input id="Fare" name="Fare" class="form-control" readonly="readonly" />
+                            @Html.ValidationMessageFor(model => model.Fare, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <button id="payButton" type="submit" class="btn btn-success btn-block">Pay now</button>
+                        </div>
+
+                    }
+                </div>
+            </div>
+      
+        </div>
+    </div>
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var payButton = document.getElementById("payButton");
+
+        payButton.addEventListener("click", function () {
+
+            alert("Car booked successfully!");
+        });
+    });
+
+    $("#PickDate, #DropDate, #VehicleType").on("change", function () {
+        var vehicleType = $("#VehicleType").val();
+        var pickDate = $("#PickDate").val();
+        var dropDate = $("#DropDate").val();
+
+        if (vehicleType && pickDate && dropDate) {
+            var startDate = new Date(pickDate);
+            var endDate = new Date(dropDate);
+            var currentDate = new Date();
+
+            if (startDate < currentDate) {
+                alert("Please select a future pick-up date.");
+                $("#PickDate").val("");
+                return;
+            }
+
+            if (endDate <= startDate) {
+                alert("Drop date should be after pick date.");
+                $("#DropDate").val("");
+                return;
+            }
+
+            var numberOfDays = (endDate - startDate) / (1000 * 60 * 60 * 24);
+
+            var fare = 0;
+
+            if (vehicleType === "Standard") {
+                fare = numberOfDays * 2500;
+            } else if (vehicleType === "Luxury") {
+                fare = numberOfDays * 5000;
+            }
+
+            $("#Fare").val(fare.toFixed(2));
+        }
+    });
+
+    // Show the success message after form submission
+    $(document).ready(function () {
+        $("#formContainer form").submit(function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Simulate a successful payment for demonstration purposes
+            // Replace this with your actual payment logic
+            setTimeout(function () {
+                $("#formContainer").hide(); // Hide the form
+                $("#successMessage").show(); // Show the success message
+            }, 2000); 
+        });
+    });
+</script>

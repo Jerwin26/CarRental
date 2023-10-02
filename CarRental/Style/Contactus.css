@@ -1,0 +1,27 @@
+﻿
+
+.contactcontainer {
+    max-width: 570px;
+    margin: 10% auto;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    background-image: url('../../image/logo/carrental image/backgro.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+/*  .form-control{
+
+                }
+        */
+#message {
+    border-radius: 5%;
+}
+
+

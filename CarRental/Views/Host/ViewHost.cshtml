@@ -1,0 +1,159 @@
+﻿@model IEnumerable<CarRental.Models.HostModel>
+
+@{
+    ViewBag.Title = "ViewHost";
+}
+
+<h2>ViewHost</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.customerId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ConfirmPassword)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rideId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vehicleID_FK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fare)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pickDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dropDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovalStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hostapprovedstatus)
+        </th>
+        <th></th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.customerId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.state)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ConfirmPassword)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.role)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rideId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vehicleID_FK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fare)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pickDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dropDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentMethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hostapprovedstatus)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edithost", new { id = item.customerId }) |
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Delete", "DeleteHost", new { id = item.customerId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,105 @@
+﻿@model CarRental.Models.HostModel
+
+@{
+    ViewBag.Title = "Host Policies and Terms";
+    Layout = "~/Views/Home/HomeLayout.cshtml";
+}
+<style>
+    .container{
+        margin-top:5%;
+        margin-bottom:2%;
+    }
+    body {
+        background-image: url('../../image/logo/carrental image/backgro.jpeg');
+    }
+</style>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<div class="container mt-5">
+    <h2 class="mb-4 text-center" >Host policies and terms</h2>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">1. Introduction</h4>
+                    <p class="card-text">
+                        Welcome to CarDeal, where you can become a host and offer your vehicles for rent on our platform. By becoming a host, you agree to abide by the following policies and terms and conditions.
+                    </p>
+
+                    <h4 class="card-title">2. Host Responsibilities</h4>
+                    <p class="card-text">
+                        As a host on CarDeal, you are responsible for maintaining accurate vehicle listings, responding to booking requests promptly, and ensuring that your vehicles are in safe and drivable condition.
+                    </p>
+
+                    <h4 class="card-title">3. Vehicle Listings</h4>
+                    <p class="card-text">
+                        You must provide detailed and accurate information about your vehicles, including their make, model, year, condition, and any special features. Any misrepresentation of your vehicles may result in account suspension.
+                    </p>
+
+                    <h4 class="card-title">4. Safety and Maintenance</h4>
+                    <p class="card-text">
+                        It is your responsibility to ensure that your vehicles are safe to drive and regularly maintained. You must follow all local laws and regulations regarding vehicle safety and maintenance.
+                    </p>
+
+                    <h4 class="card-title">5. Booking and Payments</h4>
+                    <p class="card-text">
+                        CarDeal will handle the booking and payment process.  Hosts will receive payment for bookings after the completion of a successful rental by month-end.Host need to come to office for signing the   .
+                    </p>
+
+                    <h4 class="card-title">6. Cancellation</h4>
+                    <p class="card-text">
+                        Hosts should adhere to CarDeal's cancellation policy, which is designed to provide flexibility to both hosts and renters. Cancellation policies may vary based on the host's choice.
+                    </p>
+
+                    <h4 class="card-title">7. Communication</h4>
+                    <p class="card-text">
+                        Hosts should maintain open and clear communication with renters to address any questions or concerns. Timely responses are encouraged to ensure a positive experience.
+                    </p>
+
+                    <h4 class="card-title">8. Termination</h4>
+                    <p class="card-text">
+                        CarDeal reserves the right to terminate host accounts for violations of these policies or any illegal activities. Hosts can also choose to deactivate their accounts at any time.
+                    </p>
+
+                    <h4 class="card-title">9. Changes to Policies</h4>
+                    <p class="card-text">
+                        CarDeal may update these policies and terms from time to time. Hosts will be notified of any changes, and it is their responsibility to review and comply with the updated policies.
+                    </p>
+
+                    <h4 class="card-title">10. Note</h4>
+                    <p class="card-text">
+                        To get access from the Cardeal its take three or four working days
+                        .If you have any questions or need assistance, please contact our support team at support@cardeal.com.
+                    </p>
+       
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="agreeCheckbox">
+                    <label class="form-check-label" for="agreeCheckbox">
+                        I agree to the Host Policies and Terms
+                    </label>
+                </div>
+
+                <a href="https://localhost:44391/Host/NewHostRequests" id="becomeHostButton" class="btn btn-warning" style="display: none;">
+                    Become a Host - Click here
+                </a>
+
+                <script>
+                    var agreeCheckbox = document.getElementById("agreeCheckbox");
+                    var becomeHostButton = document.getElementById("becomeHostButton");
+
+                    agreeCheckbox.addEventListener("change", function () {
+                        if (agreeCheckbox.checked) {
+                            becomeHostButton.style.display = "block";
+                        } else {
+                            becomeHostButton.style.display = "none";
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

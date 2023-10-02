@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+    <style>
+        .header {
+            height: 14vh;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 30%;
+            height: auto;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 10px;
+            margin-left: 35%;
+        }
+
+            .navbar a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .navbar a:hover {
+                    color: #ffd700;
+                }
+
+        .header-buttons .btn {
+            margin-left: 10px;
+        }
+
+        .header-buttons .btn-primary {
+            background-color: #ffd700;
+            color: #333;
+            border: none;
+        }
+
+
+        .header-buttons .btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+
+        .header-buttons {
+            margin-right: 5%;
+        }
+
+            .header-buttons .btn-primary:hover {
+                background-color: #333;
+                color: #ffd700;
+            }
+
+        footer {
+            background-color: #333;
+            height: 20%;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .footercontainer {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            color: #ffd700;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+            .footer ul li {
+                margin-bottom: 10px;
+            }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header sticky-top">
+        <div class="logo">
+            <img src="~/Image/logo/logo (2).png" alt="Logo" />
+        </div>
+        <nav class="navbar">
+            <a href="#Home">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</a>
+            <a href="#Contact">@Html.ActionLink("Contact", "InsertContact", "Contact", new { area = "" }, new { @class = "nav-link" })</a>
+            <a href="#About">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</a>
+        </nav>
+        <div class="header-buttons">
+            <a href="https://localhost:44391/Login/Login" class="btn btn-primary">Login</a>
+            <a href="https://localhost:44391/Customer/InsertCustomer" class="btn btn-secondary">Register</a>
+        </div>
+    </header>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <section class="footer">
+            <div class="footercontainer">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Locations</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Kanyakumari</a></li>
+                            <li><a href="#">Coimbatore</a></li>
+                            <li><a href="#">Kerala</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>Quick Links</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="https://localhost:44391/">Home</a></li>
+                            <li><a href="https://localhost:44391/Home/About">About</a></li>
+                            <li><a href="https://localhost:44391/Contact/InsertContact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>Contact Info</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#">8754651265</a></li>
+                            <li><a href="#">9627654321</a></li>
+                            <li><a href="cardeal@gmail.com">cardeal@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>Follow Us</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; <span>CarDeal</span> | All Rights Reserved
+            </div>
+        </section>
+    </footer>
+
+</body>
+
+</html>
+@RenderSection("scripts", required: false)

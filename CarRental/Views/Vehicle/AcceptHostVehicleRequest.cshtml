@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CarRental.Models.Vehicle>
+
+@{
+    ViewBag.Title = "AcceptHostVehicleRequest";
+    Layout = "";
+}
+
+<h2>AcceptHostVehicleRequest</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.customerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.licensePlate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fuelType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vehicleType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vehiclePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vehicleStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hostapprovedstatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.customerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.licensePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fuelType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vehicleType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vehiclePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vehicleStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hostapprovedstatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.vehicleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.vehicleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.vehicleID })
+        </td>
+    </tr>
+}
+
+</table>
